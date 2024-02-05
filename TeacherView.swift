@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct TeacherView: View {
+    
+   @State var enteredPassword = ""
+   @State var enteredUsername = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack{
+            TextField("Please Enter Username", text: $enteredUsername)
+            TextField("Please Enter Password", text: $enteredPassword)
+        } .
     }
 }
 

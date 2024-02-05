@@ -33,10 +33,22 @@ let package = Package(
             ]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", "10.0.0"..<"11.0.0")
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            dependencies: [
+                .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseAnalyticsSwift", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDatabase", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDatabaseSwift", package: "firebase-ios-sdk")
+            ],
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

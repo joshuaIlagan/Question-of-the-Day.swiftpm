@@ -9,30 +9,24 @@ import SwiftUI
 
 struct StuOrTeach: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                
-                NavigationLink(destination: StudentView()) {
-                    Text("I am a student")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(8)
-                    NavigationLink(destination: TeacherView()) {
-                        Text("I am a teacher")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(8)
+        VStack{
+            TabView{
+                StudentView()
+                    .tabItem { 
+                        Label("Student", systemImage: "pencil")
                     }
-                }
-                .navigationBarTitle("Which one are you", displayMode: .inline)
+                TeacherView()
+                    .tabItem { 
+                        Label("Teacher" , systemImage: "person.fill")
+                    }
             }
         }
     }
 }
-    struct StuOrTeach_Previews: PreviewProvider {
-        static var previews: some View {
-            StuOrTeach()
-        }
+
+
+struct StuOrTeach_Previews: PreviewProvider {
+    static var previews: some View {
+        StuOrTeach()
     }
+}
