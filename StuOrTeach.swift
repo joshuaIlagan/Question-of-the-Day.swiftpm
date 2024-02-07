@@ -17,7 +17,7 @@ struct StuOrTeach: View {
                     }
                 TeacherView()
                     .tabItem { 
-                        Label("Teacher" , systemImage: "person.fill")
+                        Label("Teacher", systemImage: "person.fill")
                     }
             }
         }
