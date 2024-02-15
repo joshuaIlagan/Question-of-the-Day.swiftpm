@@ -4,6 +4,7 @@ import SwiftUI
 
 struct Answers: View {
     @State private var buttonStates = [false, false, false, false]
+    @State private var textInput: String = "3(16x^2-60x+9)^2=100"
 
     var body: some View {
         VStack {
