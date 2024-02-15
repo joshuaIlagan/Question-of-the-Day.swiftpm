@@ -11,6 +11,7 @@ struct TeacherView: View {
     
     @State var enteredPassword = ""
     @State var enteredUsername = ""
+    @State var correctInfo = false
     
     var body: some View {
         NavigationView{
@@ -19,35 +20,46 @@ struct TeacherView: View {
                 
                 InputView(text: $enteredUsername, title: "Username", placeholder: "Enter Your Username", isSecureField: false)
                 
-                InputView(text: $enteredPassword, title: "Password", placeholder: "Enter Your Password", isSecureField: true)
+                InputView(text: $enteredPassword, title: "Password", placeholder: "Enter Your Password", isSecureField: false)
                 
-                NavigationLink(destination: TeacherQOTD()) {
-                    HStack {
-                        Text("SIGN IN")
-                            .fontWeight(.semibold)
-                        Image(systemName: "arrow.right")
+                Button("Verify Infomation") {
+                    if enteredPassword == "ABC123" && enteredUsername == "Teacher" {
+                        correctInfo = true
                     }
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
-                    .background(Color(.systemBlue))
-                    .cornerRadius(10)
-                    .padding(.top, 24)
                 }
                 
-                Button {
-                    print ("Log user in..")
-                } label: {
-                    HStack {
-                        Text ("SIGN IN")
-                            .fontWeight (.semibold)
-                        Image (systemName: "arrow.right")
+                if correctInfo {
+                    NavigationLink(destination: TeacherQOTD()) {
+                        HStack {
+                            Text("Login")
+                                .fontWeight(.semibold)
+                            Image(systemName: "arrow.right")
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                        .background(Color(.systemBlue))
+                        .cornerRadius(10)
+                        .padding(.top, 24)
                     }
-                    .foregroundColor (.white)
-                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                } else {
+                    Text("Please enter correct info or press the verify button.")
                 }
-                .background (Color (.systemBlue) )
-                .cornerRadius(10)
-                .padding(.top, 24)
+                
+                
+//                Button {
+//                    print ("Log user in..")
+//                } label: {
+//                    HStack {
+//                        Text ("SIGN IN")
+//                            .fontWeight (.semibold)
+//                        Image (systemName: "arrow.right")
+//                    }
+//                    .foregroundColor (.white)
+//                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+//                }
+//                .background (Color (.systemBlue) )
+//                .cornerRadius(10)
+//                .padding(.top, 24)
                 
                 
             }
